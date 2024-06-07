@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: mysql:8.0
-    container_name: mysql-container
+    container_name: mysql-viajes
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:
@@ -11,6 +11,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./sql-scripts:/docker-entrypoint-initdb.d
+  app:
+    build: .
+    container_name: menu-viajes
+    depends_on:
+      - db
 
 volumes:
   db_data:
