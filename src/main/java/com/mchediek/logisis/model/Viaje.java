@@ -12,7 +12,6 @@ public class Viaje {
     private String destino;
     private String carga;
 
-    // Constructor
     public Viaje(int idViaje, Cliente cliente, Conductor conductor, Date fechaInicio, Date fechaFin, String origen, String destino, String carga) {
         this.idViaje = idViaje;
         this.cliente = cliente;
@@ -24,7 +23,6 @@ public class Viaje {
         this.carga = carga;
     }
 
-    // Getters
     public int getIdViaje() {
         return idViaje;
     }

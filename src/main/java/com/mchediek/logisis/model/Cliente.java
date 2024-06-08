@@ -13,19 +13,8 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public int getIdCliente() {
-        return idCliente;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
 }
