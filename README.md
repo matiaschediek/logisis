@@ -22,8 +22,9 @@ El proyecto incluye las sentencias SQL para la configuración de la base de dato
 ## Instalación
 
 1. Clonar el repositorio
-2. Ejecutar `docker-compose up -d`
+2. Descargar el archivo [mysql-connector-java-8.4.0.jar](https://dev.mysql.com/downloads/connector/j/) y colocarlo en la carpeta *libs* en la raíz del proyecto.
+3. Ejecutar `docker-compose up -d`
 
 ## Uso
 
-- Ejectuar `docker-compose exec app java -cp /app/out com.mchediek.logisis.Main`
+- Ejectuar `docker-compose exec app java -cp /app/out:/app/mysql-connector-j-8.4.0.jar com.mchediek.logisis.Main`

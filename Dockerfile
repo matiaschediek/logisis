@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y findutils
 # Crear un directorio de trabajo
 WORKDIR /app
 
+COPY libs/mysql-connector-j-8.4.0.jar /app/mysql-connector-j-8.4.0.jar
+
 # Copiar el script de compilación y los archivos fuente
 COPY src /app/src
 

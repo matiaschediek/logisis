@@ -1,27 +1,25 @@
 package com.mchediek.logisis.controller;
 
 import com.mchediek.logisis.ColicionDeFechasConductorExcepcion;
-import com.mchediek.logisis.model.Cliente;
-import com.mchediek.logisis.model.Conductor;
 import com.mchediek.logisis.model.Viaje;
+import com.mchediek.logisis.model.ViajeDAO;
+import com.mchediek.logisis.model.ViajeRepository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
-public class GestorDeViajesLocal implements GestorDeViajes {
-    private List<Viaje> listaViajes;
+public class ControladorDeViajes implements GestorDeViajes {
 
-    public GestorDeViajesLocal() {
-        this.listaViajes = new ArrayList<>();
+    public ViajeRepository viajeRepository ;
+    public ControladorDeViajes()  {
+        this.viajeRepository = new ViajeDAO();
     }
-
     public void agregarViaje(Viaje viaje) throws ColicionDeFechasConductorExcepcion {
         validarColicionDeFechasConductor(viaje);
-        listaViajes.add(viaje);
+        viajeRepository.agregar(viaje);
     }
 
     public void validarColicionDeFechasConductor(Viaje viaje) throws ColicionDeFechasConductorExcepcion {
+        List<Viaje> listaViajes = viajeRepository.obtenerViajesPorConductor(viaje.getConductor());
         for (Viaje v : listaViajes) {
             if (v.getConductor().equals(viaje.getConductor())) {
                 if (viaje.getFechaInicio().after(v.getFechaInicio()) && viaje.getFechaInicio().before(v.getFechaFin())) {
@@ -35,7 +33,7 @@ public class GestorDeViajesLocal implements GestorDeViajes {
     }
 
     public List<Viaje> listarViajes() {
-        return listaViajes;
+        return viajeRepository.obtenerTodos();
     }
 
 }
